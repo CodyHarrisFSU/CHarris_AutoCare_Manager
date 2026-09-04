@@ -47,40 +47,52 @@ Version control, also known as revision control, records changes to a file or se
 
 **1. There are three types of version control.**
 
-[ Name & describe the three types of version control here.]
+1. **Local Version Control** - Local version control stores file revisions on a single computer. It allows a developer to return to earlier versions of a file, but it is limited for teamwork because the history is stored locally.
+
+2. **Centralized Version Control** - Centralized version control stores the project and its history on one central server. Multiple developers can connect to the server and work on the same project. This makes collaboration easier, but if the central server becomes unavailable, access to the repository may also be affected.
+
+3. **Distributed Version Control** - Distributed version control gives each developer a complete copy of the repository, including its history. Developers can work and commit changes locally, then synchronize their work with a remote repository. Git is an example of a distributed version control system.
 
 **2. Using Terminal, there are also essential Git commands to know.**
 
 List the correct Git commands to do the actions listed below in Terminal. Replace CMD with the correct command and keep or enhance the brief description.
 
-- [ CMD ]: Clone a repository
-- [ CMD ]: Set-up a global user name
-- [ CMD ]: Set-up a global email address (to match my GitHub account email)
-- [ CMD ]: Shows the current state of your directory and staging area
-- [ CMD ]: Add modified files to the next commit
-- [ CMD ]: Make a commit with a new message
-- [ CMD ]: Show my commit history
-- [ CMD ]: Show Git's help screen
+- `git clone <repository-url>`: Clone a repository
+- `git config --global user.name "Cody Harris"`: Set up a global user name
+- `git config --global user.email "CHarris01@student.fullsail.edu"`: Set up a global email address to match my GitHub account email
+- `git status`: Show the current state of the working directory and staging area
+- `git add <file>`: Add a modified file to the next commit
+- `git commit -m "commit message"`: Make a commit with a descriptive message
+- `git log`: Show my commit history
+- `git help`: Show Git's help information
 
 **3. Connecting to GitHub using Terminal.**
 HTTPS is the the correct way to connect to GitHub in this course. Describe how you connect to GitHub from Terminal using this protocol. What steps do you take?
 
-[ Describe the steps to connect Terminal to a GitHub repo here ]
+To connect to a GitHub repository using HTTPS, I first open the repository on GitHub and select the **Code** button. From there, I select **HTTPS** and copy the repository URL.
+
+Next, I open Terminal and use the `cd` command to navigate to the folder where I want to store the repository. I then use the `git clone` command followed by the copied HTTPS URL.
+
+Example:
+
+`git clone https://github.com/username/repository.git`
+
+After the repository is cloned, I use `cd repository-name` to enter the project folder. Git may ask me to authenticate through GitHub or Git Credential Manager when I push changes. Once connected, I can use Git commands such as `git status`, `git add`, `git commit`, `git pull`, and `git push` to work with the repository.
 
 **4. Using .gitignore and Why it's Important**  
 Most repositories contain a .gitignore file.
 
 - What is the purpose of this file?
   <br>
-  [Fill in answer here]
+  A `.gitignore` file tells Git which files and folders should not be tracked or committed to a repository. It is useful for excluding temporary files, build files, IDE settings, and other files that are not necessary for the project. This helps keep the repository organized and prevents unnecessary files from being included in commits.
 
 - What is the "**.DS_Store**" file and why would you want to ignore it?
   <br>
-  [Fill in answer here]
+  A `.DS_Store` file is automatically created by macOS Finder to store information about how a folder is displayed, such as icon positions and view settings. It does not contain source code needed for the project, so it should normally be ignored to prevent unnecessary changes from appearing in the repository.
 
 - What other file or folder would you want to add to a .gitignore file and why?
   <br>
-  [Fill in answer here]
+ I would add the `.vs/` folder used by Visual Studio to the `.gitignore` file. This folder contains local Visual Studio settings, caches, and other generated information that can be recreated on each developer's computer. Ignoring it keeps unnecessary IDE-specific files out of the repository.
 
 <br>
 
@@ -88,19 +100,22 @@ Most repositories contain a .gitignore file.
 
 Replace the example references below with your own links and recommended resources. It is acceptable to provide multiple links for a single topic and to use material provided to you in this class. You are encouraged to link to your own independent research as well.
 
-[ Research Summary: What resource(s) did you find most helpful this past week and why? ]
+The resources I found most helpful this week were the official Git documentation, GitHub documentation, and Apple Terminal documentation. These resources helped me better understand how version control systems work, how Git commands are used to manage changes, how repositories are connected through HTTPS, and how Terminal commands are used to navigate and manage files.
+
 
 **Terminal Commands**  
-[Site Address](https://www.someaddress.com/full/url/)
+Apple Terminal User Guide: https://support.apple.com/guide/terminal/welcome/mac
 
 **Three Types of Version Control**  
-[Site Address](https://www.someaddress.com/full/url/)
+Git - About Version Control: https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control
 
 **Git Commands**  
-[Site Address](https://www.someaddress.com/full/url/)
+Git Reference Documentation: https://git-scm.com/docs
 
 **Connecting to GitHub using Terminal**  
-[Site Address](https://www.someaddress.com/full/url/)
+GitHub Docs - Cloning a Repository: https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository
+
+GitHub Docs - About Remote Repositories: https://docs.github.com/en/get-started/git-basics/about-remote-repositories
 
 **Using .gitignore and Why it's Important**  
-[Site Address](https://www.someaddress.com/full/url/)
+GitHub Docs - Ignoring Files: https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files
