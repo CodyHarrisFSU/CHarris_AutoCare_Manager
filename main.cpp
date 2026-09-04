@@ -1,68 +1,80 @@
 #include "Helper.h"
 #include <iostream>
+#include <cstdlib>
+
+void DisplayMainMenu()
+{
+	std::cout << "\n=============================================\n";
+	std::cout << " Vehicle Service & Maintenance Management\n";
+	std::cout << "=============================================\n";
+	std::cout << "1. Add Vehicle\n";
+	std::cout << "2. View Vehicles\n";
+	std::cout << "3. Add Service Record\n";
+	std::cout << "4. View Service Records\n";
+	std::cout << "5. Exit\n";
+	std::cout << "=============================================\n";
+	std::cout << "Enter your selection: ";
+}
+
+int GetMenuChoice()
+{
+	char input[50];
+
+	while (true)
+	{
+		DisplayMainMenu();
+
+		std::cin.getline(input, 50);
+
+		if (!Helper::IsInteger(input))
+		{
+			std::cout << "\nInvalid input. Please enter a number from 1 to 5.\n";
+			continue;
+		}
+
+		int choice = std::atoi(input);
+
+		if (choice >= 1 && choice <= 5)
+		{
+			return choice;
+		}
+
+		std::cout << "\nInvalid selection. Please enter a number from 1 to 5.\n";
+	}
+}
 
 int main()
 {
+	bool running = true;
 
-	// Test IsInteger
-	char input[50];
-
-	std::cout << "Enter an integer: ";
-	std::cin.getline(input, 50);
-
-	if (Helper::IsInteger(input))
+	while (running)
 	{
-		std::cout << "Valid integer. \n";
-	}
+		int choice = GetMenuChoice();
 
-	else
-	{
-		std::cout << "Invalid integer.\n";
-	}
+		switch (choice)
+		{
+		case 1:
+			std::cout << "\nAdd Vehicle selected.\n";
+			break;
 
+		case 2:
+			std::cout << "\nView Vehicles selected.\n";
+			break;
 
-	// Test PrintIntegerBinary
-	int number = 42;
+		case 3:
+			std::cout << "\nAdd Service Record selected.\n";
+			break;
 
-	std::cout << "\nBinary for 42:\n";
-	Helper::PrintIntegerBinary(&number);
+		case 4:
+			std::cout << "\nView Service Records selected.\n";
+			break;
 
-
-	// Test BubbleSort
-
-	int values[5] = { 5, 2, 8, 1, 3 };
-
-	Helper::BubbleSort(values, 5);
-
-	std::cout << "\nSorted values:\n";
-
-	for (int i - 0; i < 5; ++i)
-	{
-		std::cout << values[i] << ' ';
-	}
-
-	std::cout << '\n';
-
-
-	// Test ClearInputBuffer
-	std::cout << "\nTesting ClearInputBuffer...\n";
-	Helper::ClearInputBuffer();
-
-
-	// Test IsEven
-
-	int evenTest = 10;
-
-	if (Helper::IsEven(&evenTest))
-	{
-		std::cout << evenTest << " is even.\n";
-	}
-
-	else
-	{
-		std::cout << evenTest << " is not even.\n";
+		case 5:
+			std::cout << "\nExiting Vehicle Service & Maintenance Management System.\n";
+			running = false;
+			break;
+		}
 	}
 
 	return 0;
-
 }
