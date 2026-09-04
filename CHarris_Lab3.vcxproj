@@ -147,7 +147,6 @@
     <ClInclude Include="dev\include\MaintenanceManager.h" />
     <ClInclude Include="dev\include\ServiceRecord.h" />
     <ClInclude Include="dev\include\Vehicle.h" />
-    <ClInclude Include="Header.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dev\src\main.cpp" />

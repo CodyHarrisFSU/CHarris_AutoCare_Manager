@@ -36,3 +36,16 @@ Vehicle* MaintenanceManager::FindVehicleByID(int vehicleID)
 
     return nullptr;
 }
+
+ServiceRecord* MaintenanceManager::FindServiceRecordByID(int serviceID)
+{
+    for (ServiceRecord& record : serviceRecords)
+    {
+        if (record.GetServiceID() == serviceID)
+        {
+            return &record;
+        }
+    }
+
+    return nullptr;
+}
