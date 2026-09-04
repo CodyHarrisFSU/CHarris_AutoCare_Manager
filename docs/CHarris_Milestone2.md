@@ -32,3 +32,40 @@ The updated validation was tested with:
 - Negative service mileage
 
 All tested validation cases behaved as expected.
+
+---
+
+## Vehicle Service History
+
+### Feature Added
+Added a vehicle-specific service history feature to AutoCare Manager.
+
+The user can now:
+- Select View Vehicle Service History from the main menu
+- Enter a vehicle ID
+- View the selected vehicle's information
+- View only the service records associated with that vehicle
+- Receive a message when the vehicle has no service records
+- Receive a helpful error message when the vehicle ID does not exist
+
+### Program Flow Changes
+The main menu was expanded from five options to six options.
+
+The new menu option is:
+
+5. View Vehicle Service History
+
+Exit was moved to option 6.
+
+After viewing service history, the program returns to the main menu so the user can continue working with the application.
+
+### Testing
+The Vehicle Service History feature was tested with:
+- Multiple vehicles
+- Multiple service records assigned to one vehicle
+- A vehicle with multiple matching service records
+- A vehicle with no service records
+- A nonexistent vehicle ID
+- Returning to the main menu after viewing history
+
+All tested scenarios behaved as expected.
