@@ -144,10 +144,16 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="dev\include\Helper.h" />
+    <ClInclude Include="dev\include\MaintenanceManager.h" />
+    <ClInclude Include="dev\include\ServiceRecord.h" />
+    <ClInclude Include="dev\include\Vehicle.h" />
     <ClInclude Include="Header.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dev\src\main.cpp" />
+    <ClCompile Include="dev\src\MaintenanceManager.cpp" />
+    <ClCompile Include="dev\src\ServiceRecord.cpp" />
+    <ClCompile Include="dev\src\Vehicle.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

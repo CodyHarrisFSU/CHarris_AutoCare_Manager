@@ -1,4 +1,6 @@
 #include "Helper.h"
+#include "MaintenanceManager.h"
+
 #include <iostream>
 #include <cstdlib>
 
@@ -45,6 +47,36 @@ int GetMenuChoice()
 
 int main()
 {
+	MaintenanceManager manager;
+
+	Vehicle testVehicle(
+		1,
+		2005,
+		"Chevrolet",
+		"Colorado",
+		150000
+	);
+
+	manager.AddVehicle(testVehicle);
+
+	ServiceRecord testService(
+		1,
+		1,
+		"Oil Change",
+		"09/03/2026",
+		59.99,
+		150000
+	);
+
+	manager.AddServiceRecord(testService);
+
+	std::cout << "\nCore Class Test\n";
+	std::cout << "Vehicles stored: "
+		<< manager.GetVehicles().size() << "\n";
+
+	std::cout << "Service records stored: "
+		<< manager.GetServiceRecords().size() << "\n";
+
 	bool running = true;
 
 	while (running)
