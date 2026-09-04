@@ -4,10 +4,10 @@ Update this document where indicated [look for the brackets!]. Replace text insi
 
 <br>
 
-## [ Course Name <-- Replace all text in brackets ]
+## Project & Portfolio I
 
-- **[ Student Name ]**
-- **[ Due Date ]**
+- **Cody Harris**
+- **September 6, 2026**
 
 This paper addresses some of the topic matter covered in research and activity this week. Be sure to include reference links below to the research and information you used to complete this assignment.
 
@@ -23,23 +23,23 @@ List the correct Terminal commands to do the actions listed below. Replace **CMD
 
 **The last bullet provides an example**.
 
-- [ CMD ]: Clear the Screen
-- [ CMD ]: Print the "Working Directory"
-- [ CMD ]: List files and folders
-- [ CMD ]: List files and folders, including invisible files
-- [ CMD ]: List all files and folders, in human readable form
-- [ CMD ]: Change directory
-- [ CMD ]: Change directory, go to root directory
-- [ CMD ]: Change directory and go to user home directory
-- [ CMD ]: Change directory, go up one folder level
-- [ CMD ]: Change directory, go up two folder levels
-- [ CMD ]: Change directory to my desktop!
+- clear: Clear the Screen
+- pwd: Print the "Working Directory"
+- ls: List files and folders
+- ls -a: List files and folders, including invisible files
+- ls -alh: List all files and folders, in human readable form
+- cd [directory]: Change directory
+- cd /: Change directory, go to root directory
+- cd ~: Change directory and go to user home directory
+- cd ..: Change directory, go up one folder level
+- cd ../..: Change directory, go up two folder levels
+- cd ~/Desktop: Change directory to my desktop!
 
 **2. Using Terminal...**
 
 **Folder Drop:** Try typing "cd" followed by a space, and then drag a folder into terminal and press return. Test this out and describe your results below.
 
-[ Describe Results Here ]
+I tested the folder-drop process using Command Prompt on my Windows computer. I typed `cd` followed by a space and dragged a folder into the command window. Windows automatically inserted the full path to the folder. After pressing Enter, the working directory changed to that folder. This demonstrated how dragging a folder into a command-line interface can save time and prevent errors when entering long directory paths.
 
 ## Topic: Version Control & Git
 
