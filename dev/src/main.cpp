@@ -16,7 +16,8 @@ void DisplayMainMenu()
 	std::cout << "2. View Vehicles\n";
 	std::cout << "3. Add Service Record\n";
 	std::cout << "4. View Service Records\n";
-	std::cout << "5. Exit\n";
+	std::cout << "5. View Vehicle Service History\n";
+	std::cout << "6. Exit\n";
 	std::cout << "=============================================\n";
 	std::cout << "Enter your selection: ";
 }
@@ -33,18 +34,20 @@ int GetMenuChoice()
 
 		if (!Helper::IsInteger(input))
 		{
-			std::cout << "\nInvalid input. Please enter a number from 1 to 5.\n";
+			std::cout
+				<< "\nInvalid input. Please enter a number from 1 to 6.\n";
 			continue;
 		}
 
 		int choice = std::atoi(input);
 
-		if (choice >= 1 && choice <= 5)
+		if (choice >= 1 && choice <= 6)
 		{
 			return choice;
 		}
 
-		std::cout << "\nInvalid selection. Please enter a number from 1 to 5.\n";
+		std::cout
+			<< "\nInvalid selection. Please enter a number from 1 to 6.\n";
 	}
 }
 
@@ -62,7 +65,8 @@ int GetValidatedInteger(const char* prompt)
 			return std::atoi(input);
 		}
 
-		std::cout << "Invalid input. Please enter a whole number.\n";
+		std::cout
+			<< "Invalid input. Please enter a whole number.\n";
 	}
 }
 
@@ -89,7 +93,75 @@ double GetValidatedDouble(const char* prompt)
 		{
 		}
 
-		std::cout << "Invalid input. Please enter a valid number.\n";
+		std::cout
+			<< "Invalid input. Please enter a valid non-negative number.\n";
+	}
+}
+
+int GetPositiveInteger(const char* prompt)
+{
+	while (true)
+	{
+		int value = GetValidatedInteger(prompt);
+
+		if (value > 0)
+		{
+			return value;
+		}
+
+		std::cout
+			<< "Invalid input. Please enter a number greater than 0.\n";
+	}
+}
+
+int GetNonNegativeInteger(const char* prompt)
+{
+	while (true)
+	{
+		int value = GetValidatedInteger(prompt);
+
+		if (value >= 0)
+		{
+			return value;
+		}
+
+		std::cout
+			<< "Invalid input. Value cannot be negative.\n";
+	}
+}
+
+int GetValidatedYear(const char* prompt)
+{
+	while (true)
+	{
+		int year = GetValidatedInteger(prompt);
+
+		if (year >= 1886 && year <= 2027)
+		{
+			return year;
+		}
+
+		std::cout
+			<< "Invalid vehicle year. Please enter a year from 1886 to 2027.\n";
+	}
+}
+
+std::string GetRequiredText(const char* prompt)
+{
+	std::string input;
+
+	while (true)
+	{
+		std::cout << prompt;
+		std::getline(std::cin, input);
+
+		if (!input.empty())
+		{
+			return input;
+		}
+
+		std::cout
+			<< "Input cannot be blank. Please try again.\n";
 	}
 }
 
@@ -97,19 +169,33 @@ void AddVehicle(MaintenanceManager& manager)
 {
 	std::cout << "\n========== Add Vehicle ==========\n";
 
-	int vehicleID = GetValidatedInteger("Enter vehicle ID: ");
-	int year = GetValidatedInteger("Enter vehicle year: ");
+	int vehicleID;
 
-	std::string make;
-	std::string model;
+	while (true)
+	{
+		vehicleID = GetPositiveInteger("Enter vehicle ID: ");
 
-	std::cout << "Enter vehicle make: ";
-	std::getline(std::cin, make);
+		if (manager.FindVehicleByID(vehicleID) == nullptr)
+		{
+			break;
+		}
 
-	std::cout << "Enter vehicle model: ";
-	std::getline(std::cin, model);
+		std::cout
+			<< "Vehicle ID " << vehicleID
+			<< " already exists. Please enter a unique vehicle ID.\n";
+	}
 
-	int mileage = GetValidatedInteger("Enter current mileage: ");
+	int year =
+		GetValidatedYear("Enter vehicle year: ");
+
+	std::string make =
+		GetRequiredText("Enter vehicle make: ");
+
+	std::string model =
+		GetRequiredText("Enter vehicle model: ");
+
+	int mileage =
+		GetNonNegativeInteger("Enter current mileage: ");
 
 	Vehicle newVehicle(
 		vehicleID,
@@ -126,7 +212,8 @@ void AddVehicle(MaintenanceManager& manager)
 
 void ViewVehicles(const MaintenanceManager& manager)
 {
-	const std::vector<Vehicle>& vehicles = manager.GetVehicles();
+	const std::vector<Vehicle>& vehicles =
+		manager.GetVehicles();
 
 	std::cout << "\n========== Vehicle List ==========\n";
 
@@ -151,32 +238,52 @@ void AddServiceRecord(MaintenanceManager& manager)
 {
 	std::cout << "\n========== Add Service Record ==========\n";
 
-	int vehicleID = GetValidatedInteger("Enter vehicle ID: ");
+	int vehicleID =
+		GetPositiveInteger("Enter vehicle ID: ");
 
-	Vehicle* vehicle = manager.FindVehicleByID(vehicleID);
+	Vehicle* vehicle =
+		manager.FindVehicleByID(vehicleID);
 
 	if (vehicle == nullptr)
 	{
-		std::cout << "\nVehicle ID " << vehicleID
-			<< " was not found. Add the vehicle before creating a service record.\n";
+		std::cout
+			<< "\nVehicle ID " << vehicleID
+			<< " was not found.\n"
+			<< "Please add the vehicle before creating a service record.\n";
+
 		return;
 	}
 
-	int serviceID = GetValidatedInteger("Enter service record ID: ");
+	int serviceID;
 
-	std::string serviceType;
-	std::string serviceDate;
+	while (true)
+	{
+		serviceID =
+			GetPositiveInteger("Enter service record ID: ");
 
-	std::cout << "Enter service type: ";
-	std::getline(std::cin, serviceType);
+		if (manager.FindServiceRecordByID(serviceID) == nullptr)
+		{
+			break;
+		}
 
-	std::cout << "Enter service date: ";
-	std::getline(std::cin, serviceDate);
+		std::cout
+			<< "Service record ID " << serviceID
+			<< " already exists. Please enter a unique service record ID.\n";
+	}
 
-	double serviceCost = GetValidatedDouble("Enter service cost: ");
+	std::string serviceType =
+		GetRequiredText("Enter service type: ");
+
+	std::string serviceDate =
+		GetRequiredText("Enter service date: ");
+
+	double serviceCost =
+		GetValidatedDouble("Enter service cost: ");
 
 	int serviceMileage =
-		GetValidatedInteger("Enter vehicle mileage at service: ");
+		GetNonNegativeInteger(
+			"Enter vehicle mileage at service: "
+		);
 
 	ServiceRecord newRecord(
 		serviceID,
@@ -189,7 +296,8 @@ void AddServiceRecord(MaintenanceManager& manager)
 
 	manager.AddServiceRecord(newRecord);
 
-	std::cout << "\nService record added successfully for "
+	std::cout
+		<< "\nService record added successfully for "
 		<< vehicle->GetYear() << " "
 		<< vehicle->GetMake() << " "
 		<< vehicle->GetModel() << ".\n";
@@ -200,36 +308,129 @@ void ViewServiceRecords(const MaintenanceManager& manager)
 	const std::vector<ServiceRecord>& records =
 		manager.GetServiceRecords();
 
-	std::cout << "\n========== Service Records ==========\n";
+	std::cout
+		<< "\n========== Service Records ==========\n";
 
 	if (records.empty())
 	{
-		std::cout << "No service records have been added.\n";
+		std::cout
+			<< "No service records have been added.\n";
+
 		return;
 	}
 
 	for (const ServiceRecord& record : records)
 	{
-		std::cout << "Service Record ID: "
+		std::cout
+			<< "Service Record ID: "
 			<< record.GetServiceID() << "\n";
 
-		std::cout << "Vehicle ID: "
+		std::cout
+			<< "Vehicle ID: "
 			<< record.GetVehicleID() << "\n";
 
-		std::cout << "Service Type: "
+		std::cout
+			<< "Service Type: "
 			<< record.GetServiceType() << "\n";
 
-		std::cout << "Service Date: "
+		std::cout
+			<< "Service Date: "
 			<< record.GetServiceDate() << "\n";
 
-		std::cout << "Service Cost: $"
-			<< std::fixed << std::setprecision(2)
+		std::cout
+			<< "Service Cost: $"
+			<< std::fixed
+			<< std::setprecision(2)
 			<< record.GetServiceCost() << "\n";
 
-		std::cout << "Mileage at Service: "
+		std::cout
+			<< "Mileage at Service: "
 			<< record.GetServiceMileage() << "\n";
 
-		std::cout << "-------------------------------------\n";
+		std::cout
+			<< "-------------------------------------\n";
+	}
+}
+
+void ViewVehicleServiceHistory(MaintenanceManager& manager)
+{
+	std::cout
+		<< "\n========== Vehicle Service History ==========\n";
+
+	int vehicleID =
+		GetPositiveInteger("Enter vehicle ID: ");
+
+	Vehicle* vehicle =
+		manager.FindVehicleByID(vehicleID);
+
+	if (vehicle == nullptr)
+	{
+		std::cout
+			<< "\nVehicle ID " << vehicleID
+			<< " was not found.\n";
+
+		return;
+	}
+
+	std::cout
+		<< "\nVehicle: "
+		<< vehicle->GetYear() << " "
+		<< vehicle->GetMake() << " "
+		<< vehicle->GetModel() << "\n";
+
+	std::cout
+		<< "Vehicle ID: "
+		<< vehicle->GetVehicleID() << "\n";
+
+	std::cout
+		<< "Current Mileage: "
+		<< vehicle->GetMileage() << "\n";
+
+	std::cout
+		<< "---------------------------------------------\n";
+
+	const std::vector<ServiceRecord>& records =
+		manager.GetServiceRecords();
+
+	bool recordFound = false;
+
+	for (const ServiceRecord& record : records)
+	{
+		if (record.GetVehicleID() == vehicleID)
+		{
+			recordFound = true;
+
+			std::cout
+				<< "Service Record ID: "
+				<< record.GetServiceID() << "\n";
+
+			std::cout
+				<< "Service Type: "
+				<< record.GetServiceType() << "\n";
+
+			std::cout
+				<< "Service Date: "
+				<< record.GetServiceDate() << "\n";
+
+			std::cout
+				<< "Service Cost: $"
+				<< std::fixed
+				<< std::setprecision(2)
+				<< record.GetServiceCost() << "\n";
+
+			std::cout
+				<< "Mileage at Service: "
+				<< record.GetServiceMileage() << "\n";
+
+			std::cout
+				<< "---------------------------------------------\n";
+		}
+	}
+
+	if (!recordFound)
+	{
+		std::cout
+			<< "No service records were found for this vehicle.\n";
 	}
 }
 
@@ -262,8 +463,13 @@ int main()
 			break;
 
 		case 5:
+			ViewVehicleServiceHistory(manager);
+			break;
+
+		case 6:
 			std::cout
 				<< "\nExiting Vehicle Service & Maintenance Management System.\n";
+
 			running = false;
 			break;
 		}

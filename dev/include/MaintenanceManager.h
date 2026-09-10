@@ -21,4 +21,5 @@ public:
     const std::vector<ServiceRecord>& GetServiceRecords() const;
 
     Vehicle* FindVehicleByID(int vehicleID);
+    ServiceRecord* FindServiceRecordByID(int serviceID);
 };
