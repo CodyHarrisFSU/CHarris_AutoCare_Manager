@@ -14,6 +14,24 @@ void MaintenanceManager::AddServiceRecord(const ServiceRecord& record)
     serviceRecords.push_back(record);
 }
 
+bool MaintenanceManager::RemoveServiceRecord(int serviceID)
+{
+    ServiceRecord* record = FindServiceRecordByID(serviceID);
+
+    if (record == nullptr)
+    {
+        return false;
+    }
+
+    if (record->IsRemoved())
+    {
+        return false;
+    }
+
+    record->SetRemoved(true);
+    return true;
+}
+
 const std::vector<Vehicle>& MaintenanceManager::GetVehicles() const
 {
     return vehicles;
@@ -46,6 +64,6 @@ ServiceRecord* MaintenanceManager::FindServiceRecordByID(int serviceID)
             return &record;
         }
     }
-
+        
     return nullptr;
 }

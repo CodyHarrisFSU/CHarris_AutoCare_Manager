@@ -8,20 +8,24 @@ ServiceRecord::ServiceRecord()
     serviceDate = "";
     serviceCost = 0.0;
     serviceMileage = 0;
+    isRemoved = false;
 }
 
-ServiceRecord::ServiceRecord(int id, int vehicleId,
+ServiceRecord::ServiceRecord(
+    int id,
+    int vehicleId,
     const std::string& type,
     const std::string& date,
     double cost,
     int mileage)
+    : serviceID(id),
+    vehicleID(vehicleId),
+    serviceType(type),
+    serviceDate(date),
+    serviceCost(cost),
+    serviceMileage(mileage),
+    isRemoved(false)
 {
-    serviceID = id;
-    vehicleID = vehicleId;
-    serviceType = type;
-    serviceDate = date;
-    serviceCost = cost;
-    serviceMileage = mileage;
 }
 
 int ServiceRecord::GetServiceID() const
@@ -82,4 +86,14 @@ void ServiceRecord::SetServiceCost(double cost)
 void ServiceRecord::SetServiceMileage(int mileage)
 {
     serviceMileage = mileage;
+}
+
+bool ServiceRecord::IsRemoved() const
+{
+    return isRemoved;
+}
+
+void ServiceRecord::SetRemoved(bool removed)
+{
+    isRemoved = removed;
 }
