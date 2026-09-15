@@ -146,12 +146,14 @@
     <ClInclude Include="dev\include\Helper.h" />
     <ClInclude Include="dev\include\MaintenanceManager.h" />
     <ClInclude Include="dev\include\ServiceRecord.h" />
+    <ClInclude Include="dev\include\ServiceType.h" />
     <ClInclude Include="dev\include\Vehicle.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dev\src\main.cpp" />
     <ClCompile Include="dev\src\MaintenanceManager.cpp" />
     <ClCompile Include="dev\src\ServiceRecord.cpp" />
+    <ClCompile Include="dev\src\ServiceType.cpp" />
     <ClCompile Include="dev\src\Vehicle.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
