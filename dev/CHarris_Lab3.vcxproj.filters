@@ -15,30 +15,33 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="dev\include\Helper.h">
+    <ClInclude Include="include\MaintenanceManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="dev\include\MaintenanceManager.h">
+    <ClInclude Include="include\ServiceRecord.h">
+      <Filter>Header File</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Vehicle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="dev\include\ServiceRecord.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="dev\include\Vehicle.h">
+    <ClInclude Include="include\ServiceType.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="dev\src\main.cpp">
+    <ClCompile Include="src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="dev\src\MaintenanceManager.cpp">
+    <ClCompile Include="src\MaintenanceManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="dev\src\ServiceRecord.cpp">
+    <ClCompile Include="src\ServiceRecord.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="dev\src\Vehicle.cpp">
+    <ClCompile Include="src\Vehicle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ServiceType.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
