@@ -1,4 +1,4 @@
-#pragma once
+		   #pragma once
 
 #include <string>
 
@@ -11,6 +11,7 @@ private:
     std::string serviceDate;
     double serviceCost;
     int serviceMileage;
+    bool isRemoved;
 
 public:
     ServiceRecord();
@@ -28,10 +29,13 @@ public:
     double GetServiceCost() const;
     int GetServiceMileage() const;
 
+    bool IsRemoved() const;
+
     void SetServiceID(int id);
     void SetVehicleID(int vehicleId);
     void SetServiceType(const std::string& type);
     void SetServiceDate(const std::string& date);
     void SetServiceCost(double cost);
     void SetServiceMileage(int mileage);
+    void SetRemoved(bool removed);
 };

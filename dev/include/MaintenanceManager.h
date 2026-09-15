@@ -18,6 +18,7 @@ public:
 
     void AddVehicle(const Vehicle& vehicle);
     void AddServiceRecord(const ServiceRecord& record);
+    bool RemoveServiceRecord(int serviceID);
     void AddServiceType(const ServiceType& serviceType);
 
     const std::vector<Vehicle>& GetVehicles() const;
@@ -26,5 +27,4 @@ public:
 
     Vehicle* FindVehicleByID(int vehicleID);
     ServiceRecord* FindServiceRecordByID(int serviceID);
-
 };
