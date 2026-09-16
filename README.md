@@ -44,13 +44,16 @@ For Milestone 3, I plan to continue expanding the program with additional featur
 # Milestone 3 Stand-Up
 
 ## Overview
-This week I focused on expanding, refining, and stabilizing the Vehicle Service & Maintenance Management System. I implemented a reusable Service Type Library, added the ability to remove service records while preserving them for historical reference, and refactored the program to improve code organization and reduce repeated logic. I also continued testing the application to make sure the existing vehicle and service features continued working correctly after the changes.
+This week I focused on expanding, refining, and stabilizing the Vehicle Service & Maintenance Management System. I implemented additional service-management features, improved the program's organization, refactored repeated logic, and continued testing the application for edge cases.
+
+## Improvements
+I implemented a reusable Service Type Library with predefined services, fixed and variable pricing, and support for custom service types. I also added a service record removal feature that preserves records for historical reference and clearly marks removed records with a red REMOVED indicator. Input validation and repeated service-record display logic were refactored to improve readability and maintainability.
 
 ## Challenges
-One of the main challenges was integrating the new Service Type Library with the existing project structure while preserving functionality from previous milestones. I also encountered Git merge conflicts while moving changes between feature branches and the dev branch. These conflicts were resolved by reviewing the affected files, preserving the correct functionality, rebuilding the project, and testing the program after the merge. Refactoring the program also required making sure that changes to repeated code did not affect the expected program behavior.
+One of the main challenges was integrating the new ServiceType class while preserving functionality from previous milestones. I also encountered Git merge conflicts and Visual Studio file-path issues while organizing the new source and header files. I resolved these issues by reviewing the affected files, correcting project references, rebuilding the solution, and retesting the application.
 
 ## Accomplishments
-I added a reusable ServiceType class and service type collection that allows predefined maintenance services and pricing to be used when creating service records. I also implemented a service record removal feature that marks records as removed instead of permanently deleting them, allowing the records to remain available in the vehicle's service history. Removed records are clearly identified in the console. I refactored repeated service-record display logic and input validation to improve readability and maintainability while preserving the existing functionality of the application.
+I improved my understanding of C++ class interaction, vectors, refactoring, debugging, and Git/GitHub workflow. I successfully expanded the application while preserving its existing functionality and learned how to resolve merge conflicts without losing completed work.
 
 ## Next Steps
-For the final milestone, I plan to complete comprehensive testing and debugging, address any remaining edge cases, finalize the project documentation and screenshots, and prepare the application for final submission. I will also review the overall project structure and verify that all required features work correctly before merging the completed development branch into main.
+For Week 4, I plan to complete final testing and refinement of AutoCare Manager, address any remaining bugs or usability issues, review the overall class structure and documentation, and prepare the completed project for final submission.
