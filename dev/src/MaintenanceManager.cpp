@@ -73,6 +73,25 @@ bool MaintenanceManager::RemoveServiceRecord(int serviceID)
     return true;
 }
 
+bool MaintenanceManager::RestoreServiceRecord(int serviceID)
+{
+    ServiceRecord* record =
+        FindServiceRecordByID(serviceID);
+
+    if (record == nullptr)
+    {
+        return false;
+    }
+
+    if (!record->IsRemoved())
+    {
+        return false;
+    }
+
+    record->SetRemoved(false);
+    return true;
+}
+
 void MaintenanceManager::AddServiceType(
     const ServiceType& serviceType)
 {

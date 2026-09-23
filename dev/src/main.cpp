@@ -329,7 +329,7 @@ void DisplayServiceTypeLibrary(
     const std::vector<ServiceType>& serviceTypes =
         manager.GetServiceTypes();
 
-    std::cout
+     std::cout
         << "\n========== Service Type Library ==========\n";
 
     for (size_t i = 0;
@@ -805,15 +805,42 @@ void RemoveServiceRecord(
         return;
     }
 
-    if (record->IsRemoved())
+   if (record->IsRemoved())
+{
+    std::cout
+        << "\nService record ID "
+        << serviceID
+        << " is currently marked as REMOVED.\n\n";
+
+    std::cout
+        << "1. Cancel Removal Status\n"
+        << "2. Return to Main Menu\n";
+
+    int choice = GetValidatedInteger(
+        "Enter your selection: ");
+
+    while (choice < 1 || choice > 2)
     {
         std::cout
-            << "Service record ID "
-            << serviceID
-            << " has already been removed.\n";
+            << "Invalid selection. Please choose 1 or 2.\n";
 
-        return;
+        choice = GetValidatedInteger(
+            "Enter your selection: ");
     }
+
+    if (choice == 1)
+    {
+        if (manager.RestoreServiceRecord(serviceID))
+        {
+            std::cout
+                << "Service record ID "
+                << serviceID
+                << " has been restored.\n";
+        }
+    }
+
+    return;
+}
 
     std::cout
         << "\nRecord selected:\n"

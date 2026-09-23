@@ -18,8 +18,9 @@ public:
 
     void AddVehicle(const Vehicle& vehicle);
     void AddServiceRecord(const ServiceRecord& record);
-    bool RemoveServiceRecord(int serviceID);
     void AddServiceType(const ServiceType& serviceType);
+    bool RemoveServiceRecord(int serviceID);
+    bool RestoreServiceRecord(int serviceID);
 
     const std::vector<Vehicle>& GetVehicles() const;
     const std::vector<ServiceRecord>& GetServiceRecords() const;
